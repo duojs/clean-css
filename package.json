@@ -1,7 +1,7 @@
 {
   "name": "duo-clean-css",
   "description": "A duo alternate plugin for compressing a CSS build",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "repository": "duojs/clean-css",
   "dependencies": {
     "bytes": "^2.0.1",
