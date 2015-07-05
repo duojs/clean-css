@@ -6,7 +6,6 @@
 var assert = require('assert');
 var Duo = require('duo');
 var cleancss = require('..');
-var vm = require('vm');
 
 /**
  * Tests.
@@ -16,7 +15,6 @@ describe('duo-clean-css', function () {
   it('should compress css files', function (done) {
     build('simple').run(function (err, results) {
       if (err) return done(err);
-      console.log(results.code);
       assert.equal(results.code.indexOf('\n'), -1); // 1 line
       done();
     });
@@ -26,7 +24,6 @@ describe('duo-clean-css', function () {
     var options = { keepBreaks: true };
     build('simple', options).run(function (err, results) {
       if (err) return done(err);
-      console.log(results.code);
       assert(results.code.indexOf('\n') > -1);
       done();
     });
@@ -46,17 +43,4 @@ function build(fixture, options) {
     .cache(false)
     .entry('fixtures/' + fixture + '.css')
     .use(cleancss(options));
-}
-
-/**
- * Evaluates code compiled by duo.
- *
- * @param {String} src
- * @param {Object} [ctx]
- * @returns {Object}
- */
-
-function evaluate(src, ctx) {
-  ctx = ctx || { console: console };
-  return vm.runInNewContext(src, ctx)(1);
 }
