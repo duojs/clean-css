@@ -17,8 +17,8 @@ var defaults = {
 };
 
 /**
- * Returns an uglify _alternate_ plugin (operates on the entire build for a JS
- * entry file)
+ * Returns a CleanCSS _alternate_ plugin (operates on the entire build
+ * for a CSS entry file)
  *
  * @param {Object} o
  * @returns {Function}
